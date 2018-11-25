@@ -30,10 +30,13 @@ class AuthController extends Controller
     // Register
     public function register(Request $request){
         $user=new User();
+
+        //     tabel_name=$request->input
         $user->user_name=$request->user_name;
         $user->user_pass=bcrypt($request->user_pass);
         $user->user_tlfn=$request->user_tlfn;
         $user->user_email=$request->user_email;
+        $user->status=0;
         $user->save();
 
         return response()->json([

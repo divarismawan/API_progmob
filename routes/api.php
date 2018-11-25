@@ -22,6 +22,13 @@ Route::get('my_api','HomeController@my_api');
 Route::post('login', 'AuthController@login');
 Route::post('register','AuthController@register');
 
+//novel
+Route::post('addNovel','NovelController@addNovel');
+Route::post('deleteNovel/{id}', 'NovelController@deleteNovel');
+Route::post('selectNovel','NovelController@selectNovel');
+
+
+
 // Route::group(['middleware' => 'auth:api'], function(){
 //     Route::post('details', 'API\UserController@details');
 //     });
