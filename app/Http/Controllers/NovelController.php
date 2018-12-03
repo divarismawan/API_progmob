@@ -66,10 +66,15 @@ class NovelController extends Controller
 
         $novel=Novel::orderBy('updated_at','desc')->get();
 
-        return response()->json([
+        return response()->json(
             $novel, $this-> successStatus
-        ]);
+        );
 
+    }
+
+    public function selectById($id){
+        $novel = Novel::where('id', $id)->first();
+        return response()->json($novel);
     }
 
 

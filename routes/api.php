@@ -26,6 +26,7 @@ Route::post('register','AuthController@register');
 Route::post('addNovel','NovelController@addNovel');
 Route::post('deleteNovel/{id}', 'NovelController@deleteNovel');
 Route::post('selectNovel','NovelController@selectNovel');
+Route::get('selectById/{id}','NovelController@selectById');
 
 
 
