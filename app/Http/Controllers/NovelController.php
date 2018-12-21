@@ -14,9 +14,10 @@ class NovelController extends Controller
     public function addNovel(Request $request){
         if($request->hasFile('novel_cover') && $request->hasFile('novel_story')){
 
+            $user = App\User::find($request->id);
+
             $novel = new Novel();
             $destinationPath = 'StoryNovels';
-
 
             $novel->novel_title=$request->novel_title;
             

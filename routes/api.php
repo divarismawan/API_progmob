@@ -21,6 +21,7 @@ Route::get('my_api','HomeController@my_api');
 
 Route::post('login', 'AuthController@login');
 Route::post('register','AuthController@register');
+Route::post('getfav','TbUserController@getNovel');
 
 //novel
 Route::post('addNovel','NovelController@addNovel');

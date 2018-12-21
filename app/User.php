@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
+    //protected $primaryKey = "user_id";
+    //protected $incrementing = false;
     protected $table="tb_user";
     public $timestamps=false;
 
@@ -34,5 +36,9 @@ class User extends Authenticatable
 
     public function getAuthPassword(){
         return $this->user_pass;
+    }
+
+    public function favoriteNovels(){
+        return $this->belongsToMany('App\Novel', 'favorites');
     }
 }

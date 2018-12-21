@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\tb_user;
+use App\User as User;
 use Illuminate\Http\Request;
 
 class TbUserController extends Controller
@@ -81,5 +82,16 @@ class TbUserController extends Controller
     public function destroy(tb_user $tb_user)
     {
         //
+    }
+
+    public function getNovel(Request $request){
+        $user = User::find($request->user_id);
+
+        //dd($user->favoriteNovels->all());
+
+        return response()->json([
+          'favorites' => $user->favoriteNovels,
+          200
+        ]);
     }
 }
