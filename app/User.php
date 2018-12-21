@@ -22,8 +22,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_name', 'user_pass','user_email','user_tlfn','user_pass', 'status'
+        'user_name', 'user_pass','user_email','user_tlfn','user_pass', 'status', 'fcm_token'
     ];
+
+    public function updateFcmToken($token)
+    {
+        $this->update(['fcm_token' => $token]);
+    }
 
     /**
      * The attributes that should be hidden for arrays.

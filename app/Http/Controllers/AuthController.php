@@ -17,8 +17,15 @@ class AuthController extends Controller
         // return request('user_pass');
         if(Auth::attempt(['user_email' => request('user_email'), 'password' => request('user_pass')])){ 
             $user = Auth::user(); 
-            $user->token=  $user->createToken('MyApp')-> accessToken; 
-            return response()->json($user, $this-> successStatus); 
+            $user->token =  $user->createToken('MyApp')->accessToken; 
+
+            User::find($user->id)->update(['fcm_token' => request('fcm_token')]);
+
+            //$user->update(request()->except(['token']));
+            //$user->update(['fcm_token' => request('fcm_token')]);
+            //$user->updateFcmToken(request('fcm_token'));
+
+            return response()->json($user, $this->successStatus); 
         } 
         else{ 
             return response()->json(['error'=>'Unauthorised'], 401); 
